@@ -1,0 +1,25 @@
+Lineに画像を飛ばす
+
+トークンが書かれたファイルをラズパイに入れておく
+ai101フォルダに移動する
+
+・cv4に入る
+workon cv4
+
+・トークンをセットする
+$ python settoken.py
+トークンを入力
+
+・トークンを利用できるようにする。
+$ chmod go-rw ~/.netrc
+
+・人(1)を認識したらLINEにメッセージを送るプログラムを実行
+$ python message.py -w frozen_inference_graph.pb -p config.pbtxt -t 1
+カメラはqで終了
+
+・人(1)を認識したらLINEに写真を送るプログラムを実行
+$ python image.py -w frozen_inference_graph.pb -p config.pbtxt -t 1→数字を変えると認識物体が
+カメラはCtrl-zで終了
+
+☆認識するもの一覧
+検出物体一覧_r1-1.pdf

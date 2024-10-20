@@ -1,0 +1,12 @@
+AIカメラプログラムを動かす
+
+workon cv4
+cd ai101
+python ai.py -w frozen_inference_graph.pb -p config.pbtxt
+
+カメラを止める時は以下のどちらか
+・ターミナル上でCtl+c
+・カメラのGUI上でq →こちらが優先
+
+cv4を出る時はdeactivate
+

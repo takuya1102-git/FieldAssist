@@ -1,0 +1,53 @@
+pi@nwj-guest2:~ $ eog image.jpg
+pi@nwj-guest2:~ $ raspistill -o Pictures/image2.jpg
+pi@nwj-guest2:~ $ eog image2.jpg
+pi@nwj-guest2:~ $ list
+bash: list: コマンドが見つかりません
+pi@nwj-guest2:~ $ winget
+bash: winget: コマンドが見つかりません
+pi@nwj-guest2:~ $ apt-show-versions
+bash: apt-show-versions: コマンドが見つかりません
+pi@nwj-guest2:~ $ ps
+  PID TTY          TIME CMD
+ 1374 pts/0    00:00:00 bash
+ 1682 pts/0    00:00:00 ps
+pi@nwj-guest2:~ $ workon cv4
+(cv4) pi@nwj-guest2:~ $ cd ai101
+(cv4) pi@nwj-guest2:~/ai101 $ python ai.py -w frozen_inference_graph.pb -p config.pbtxt
+モデル読み込み...
+ビデオカメラ開始...
+終了処理...
+(cv4) pi@nwj-guest2:~/ai101 $ sudo nano client.py
+(cv4) pi@nwj-guest2:~/ai101 $ python3 client.py
+Traceback (most recent call last):
+  File "client.py", line 89, in <module>
+    cli = InetClient()
+  File "client.py", line 83, in __init__
+    super().connect(self.server, socket.AF_INET, socket.SOCK_STREAM, 0)
+  File "client.py", line 27, in connect
+    self.__socket.connect(self.__address)
+ConnectionRefusedError: [Errno 111] Connection refused
+(cv4) pi@nwj-guest2:~/ai101 $ ^C
+(cv4) pi@nwj-guest2:~/ai101 $ python3 client.py
+Traceback (most recent call last):
+  File "client.py", line 89, in <module>
+    cli = InetClient()
+  File "client.py", line 83, in __init__
+    super().connect(self.server, socket.AF_INET, socket.SOCK_STREAM, 0)
+  File "client.py", line 27, in connect
+    self.__socket.connect(self.__address)
+ConnectionRefusedError: [Errno 111] Connection refused
+(cv4) pi@nwj-guest2:~/ai101 $ 
+pi@nwj-guest2:~ $ cd ESP32
+pi@nwj-guest2:~/ESP32 $ sudo nano esp32_serial_get_send.py
+pi@nwj-guest2:~/ESP32 $ ls /dev/ttyACM*
+/dev/ttyACM0
+pi@nwj-guest2:~/ESP32 $ python esp32_serial_get_send.py
+  File "esp32_serial_get_send.py", line 9
+    if(esp32_data > 0)
+                     ^
+SyntaxError: invalid syntax
+pi@nwj-guest2:~/ESP32 $ sudo nano esp32_serial_get_send.py
+pi@nwj-guest2:~/ESP32 $ sudu shutdown _h now^C
+
+

@@ -1,0 +1,32 @@
+１）ラズベリーパイ用のOSをSDカードに入れる
+https://www.indoorcorgielec.com/resources/raspberry-pi/raspberry-pi-os%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB/?fbclid=IwAR14UDVj2ZfVBL87QKQBYIC6vIAkjWNqFdPWBziXWOQ7KaP3y20Cdv4q13M
+
+
+２）PCを使ってラズベリーパイをリモート操作する
+sudo apt update
+sudo apt-get install xrdp
+sudo apt install vnc4server
+以上で、「リモートデスクトップ接続」を用いて接続します。
+メニューからWindowsアクセサリー→リモート接続を選択。
+	↓
+$ ifconfig で、IPアドレスを知る(wlanにIPアドレスが表示される）
+今の回線状況は、以下で。
+arp -a
+	↓
+これをWindowsのリモート接続の画面に入力する。
+接続：nwj-hamako.local
+接続されたら ID:pi パスワード:1234
+以上でOSが起動される。
+
+
+生徒さんラズパイのログイン情報
+接続：nwj-guest2.local(Xは0か2か3か4)
+ID：pi
+パスワード：1234
+
+仮想環境に入る
+workon cv4
+仮想環境を出る
+deactivate
+ラズパイ電源off
+sudo poweroff

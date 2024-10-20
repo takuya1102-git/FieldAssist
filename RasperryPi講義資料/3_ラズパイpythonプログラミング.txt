@@ -1,0 +1,50 @@
+1)日本語入力を設定 河野先生が設定済み
+・ライブラリーのアップデート
+$ sudo apt-get update
+	↓
+・日本語フォントの入力
+$ sudo apt-get install fonts-vlgothic 　
+	↓
+・日本語入力ソフトをインストール
+$ sudo apt-get install ibus-anthy　（途中でyと入力、リターンする）
+	↓
+$ sudo reboot　
+その後、メニュー右上にENと表示されるので、クリックすると日本語入力できる
+
+※以下でシャットダウン　電源ONOFFで切らない。
+$ sudo poweroff
+$ sudo shutdown -h now
+
+2)Wifi切れを止める(しばらく使わずにいるとWifiが切れる現象）　設定済み
+$ sudo nano /etc/rc.local
+	↓
+# exit文の前に以下を追加して保存（Contr-o 、リターン、 Contr-x)
+sudo iwconfig wlan0 power off
+	↓
+$ sudo reboot
+
+3)Python3&pip3インストール　設定済み
+# sudo apt install python3-dev -y
+# sudo pip3 install pip -U
+# sudo pip3 install setuptools -U(WARNINGが出る)
+
+4)pythonプログラムの実行テスト
+ルートで「ESP32」フォルダを作成し、中に移動してください。
+$ cd
+$ mkdir ESP32
+$ cd ESP32
+
+Pythonプログラムを作成します。
+$ sudo nano printabc.py
+	↓
+以下を入力
+print("ABC")
+a = 2
+b = 3 * a
+print(a)
+print(b)
+	↓
+保存（Ctrl-o 、リターン、 Ctrl-x)
+	↓
+$ python3 printabc.py
+

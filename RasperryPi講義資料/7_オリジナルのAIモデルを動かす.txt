@@ -1,0 +1,17 @@
+◆オリジナルのAIモデルを動かす
+
+CV4に入る
+$ workon cv4
+↓
+ai101フォルダに移動する
+↓
+konoaiフォルダに移動する
+
+・プログラムを実行
+$ python3 predict.py car2.jpg
+
+predict0.py 基本モデル
+predict.py VGG-16転移学習モデル
+
+・静止画確認をしたい場合
+eog car2.jpg

@@ -1,0 +1,20 @@
+カメラで静止画撮影
+
+・カメラ利用設定
+メインメニュー→設定→ Raspberry Piの設定
+インターフェイスタブ→カメラ→有効
+再起動
+
+・静止画撮影
+ターミナルを開く
+下記コマンドで撮影
+raspistill -o Pictures/image2.jpg
+
+・静止画確認 これは１度だけ。
+eogパッケージインストールコマンド
+$ sudo apt-get update
+$ sudo apt install eog
+※覚えていますか？lsコマンド、cdコマンド
+Picturesフォルダに移動してください。
+下記コマンドで写真を開く
+eog image2.jpg

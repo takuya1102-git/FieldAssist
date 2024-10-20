@@ -1,0 +1,82 @@
+ESP32Dongleとの連携方法
+
+◆LED点灯
+
+サーバー内のESP32_Raspberrypi_serial_LEDをESP32に書き込む
+	↓
+ConnectorAにLEDをつないでおく。
+ESP32をラズパイのUSBポートに挿す。
+	↓
+USBポート名確認
+$ ls /dev/ttyACM* →ttyACM0が基本 番号が変わる可能性。これでチェック可能。
+※ESP32を書き換えるとUSBポート番号が変わってしまうことがあります。
+その時はpythonプログラムのポート番号を書き換える必要があります。
+	↓
+ルートから「ESP32」フォルダに移動してください。
+esp32_serial_led.pyプログラムを作成します。
+$ sudo nano esp32_serial_send.py
+	↓
+import serial
+import time
+
+ser = serial.Serial('/dev/ttyACM0', 115200)
+
+for i in range(3):
+	ser.write(b'A')
+	print("LED ON")
+	time.sleep(0.5)
+	ser.write(b'B')
+	print("LED OFF")
+	time.sleep(0.5)
+ser.close()
+print("blink end")
+	↓
+保存（Ctrl-o 、リターン、 Ctrl-x)
+	↓
+$ python esp32_serial_send.py
+でLED３回点滅。
+
+==============================================================================
+◆センサーデータ送信 シリアルモニタを開いたままのアップロードが良い。
+
+サーバー内のESP32_Raspberrypi_serial_LightSensorをESP32に書き込む
+	↓
+INに光センサーをつないでおく。
+書き込み機につないだESP32をラズパイのUSBポートに挿す。
+	↓
+ルートから「ESP32」フォルダに移動してください。
+esp32_serial_get.pyプログラムを作成します。
+$ sudo nano esp32_serial_get.py
+	↓
+import serial
+
+ser = serial.Serial('/dev/ttyACM0', 115200)
+
+while True:
+	esp32_data = ser.readline()
+	print(esp32_data)
+ser.close()
+	↓
+保存（Ctrl-o 、リターン、 Ctrl-x)
+	↓
+$ python esp32_serial_get.py
+
+Ctrl-zでプログラム終了
+
+==============================================================================
+◆LineにAI判定した画像と共にセンサーデータ送付
+
+CV4に入る
+$ workon cv4
+↓x
+pyserialインストール
+$ pip install pyserial
+↓
+ai101フォルダに移動する
+↓
+ESP32内のプログラムはそのまま。
+↓
+サーバーに入っているimage_sensor.pyをラズパイのai101フォルダに移動する。
+
+・人(1)を認識したらLINEに写真とセンサーデータを送るプログラムを実行
+$ python image_sensor.py -w frozen_inference_graph.pb -p config.pbtxt -t 1
